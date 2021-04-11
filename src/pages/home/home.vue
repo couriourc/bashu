@@ -1,6 +1,6 @@
 <template>
   <div class="home-container">
-    <swiper/>
+    <swiper />
     <bar/>
     <el-row type="flex" class="showBar">
       <el-col>
@@ -18,7 +18,11 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+      imgs: [
+
+      ]
+    }
   },
   methods: {},
   components: {

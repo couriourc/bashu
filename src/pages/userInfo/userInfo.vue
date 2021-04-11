@@ -48,10 +48,7 @@
           <el-col>
             <el-card shadow="hover">
               <el-col>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa distinctio,</p>
-                <p> earum illum laudantium modi mollitia numquam officiis sit tempora? Ab asperiores cupiditate
-                  excepturi
-                  harum magni nulla quia rem ut, voluptas?</p>
+                <p>{{ anotherInfo.content }}</p>
               </el-col>
               <el-col style="text-align: center">
                 <el-image :src="require('@/assets/images/p1.jpg')" fit="container" style="width: 50vw;"></el-image>
@@ -83,7 +80,10 @@ export default {
       anotherInfos: [{
         userName: '巴蜀拾艺人',
         data: '3-2 18:30',
-        device: '华为'
+        device: '华为',
+        content:'古代中国是世界中心，诸多技艺均领先世界水平，即使到现代也依然让人叹为观止，榫卯结构就是其中最为华丽的一点。\n' +
+          '\n' +
+          '榫卯是在两个木构件上所采用的一种凹凸结合的连接方式。'
       },{
         userName: '巴蜀拾艺人',
         data: '3-2 18:30',
