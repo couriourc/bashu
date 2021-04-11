@@ -17,16 +17,16 @@
 
     <el-row type="flex" justify="space-around">
       <el-col :span="10">
-        <book-list></book-list>
+        <book-list :img-list="imgList"></book-list>
       </el-col>
       <el-col :span="10">
-        <new-list></new-list>
+        <new-list title="热点资讯"></new-list>
       </el-col>
     </el-row>
 
     <el-row>
       <el-col :span="22" :offset="1">
-        <book-list img-height="50px"></book-list>
+        <book-list title="热门艺术" img-height="50px"></book-list>
       </el-col>
     </el-row>
   </div>
@@ -42,6 +42,30 @@ import NewList from "@/components/NewsList/NewList";
 import BookDetail from "@/components/bookDetail/BookDetail";
 
 export default {
+  data() {
+    return {
+      imgList: [
+            {
+              link: require("@/assets/images/p4.png"),
+              detail: ""
+            }, {
+              link: require("@/assets/images/pro2.jpg"),
+              detail: ""
+            }, {
+              link: require("@/assets/images/p4.png"),
+              detail: ""
+            }, {
+              link: require("@/assets/images/pro2.jpg"),
+              detail: ""
+            }, {
+              link: require("@/assets/images/p4.png"),
+              detail: ""
+            },
+          ]
+
+
+    }
+  },
   components: {
     NewList,
     BookList,

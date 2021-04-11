@@ -4,28 +4,17 @@
 
     <book-list :img-list="bookListInfo"></book-list>
 
-    <el-row :gutter="30" justify="space-around" type="flex" >
-      <el-col :span="10">
-        <el-card class="box-card" style="text-align: center" shadow="hover">
+    <el-row :gutter="30" justify="space-around" type="flex" style="margin-top: 2em">
+      <el-col :span="10" v-for="card_info in card_infos">
+        <el-card  class="box-card" style="text-align: center" shadow="hover">
           <div slot="header" class="clearfix">
-            <span style="color: #ff5777;font-weight: bold">猜你喜欢</span>
+            <span style="color: #ff5777;font-weight: bold">{{card_info.title}}</span>
           </div>
-          <el-image :src="imgLink[0]"></el-image>
-          <p>锅盔凉粉</p>
+          <el-image :src="card_info.src"></el-image>
+          <p>{{ card_info.description }}</p>
         </el-card>
       </el-col>
 
-      <el-col :span="10">
-
-        <el-card class="box-card" style="text-align: center" shadow="hover">
-          <div slot="header" class="clearfix">
-            <span style="color: #ff5777;font-weight: bold">爱心帮</span>
-          </div>
-          <el-image :src="imgLink[1]"></el-image>
-          <p>四川青花椒</p>
-        </el-card>
-
-      </el-col>
     </el-row>
   </el-card>
 </template>
@@ -43,9 +32,17 @@ export default {
 
   data(){
     return{
-      imgLink:[
-        require("@/assets/images/guokui.jpg"),
-        require("@/assets/images/huajiao.jpg")
+
+      card_infos:[
+        {
+          title:'猜你喜欢',
+          src:require("@/assets/images/guokui.jpg"),
+          description:'锅盔凉粉'
+        },{
+          title:'爱心帮',
+          src:require("@/assets/images/mingjianwenxue.png"),
+          description: '花椒'
+        }
       ],
       bookListInfo:[
         {

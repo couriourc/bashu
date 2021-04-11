@@ -3,9 +3,10 @@
     <el-container>
       <el-header class="header" height="auto">
         <el-image
-          :src="require('@/assets/images/banner.jpg')"
+          :src="banner"
           class="banner"
-          fit="true"
+          fit="cover"
+          style="height: 20vw"
         />
         <el-row :gutter="20" align="middle" justify="center" type="flex">
           <el-col :span="10" align="middle" justify="center"
@@ -41,22 +42,28 @@
           <el-col :span="10" align="left">
             <el-row style="margin-top: 7px">
               <el-col :span="10">
-                <el-link :underline="false" style="color:#fdfff4 ;"> 官网首页</el-link>
+                <el-link :underline="false" style="color:#fdfff4 ;" @click="goNext('/')"> 官网首页</el-link>
               </el-col>
             </el-row>
             <el-row style="margin-top: 7px">
               <el-col :span="10" align="left">
-                <el-link :underline="false" style="color: #fdfff4;"> 关于我们</el-link>
+                <el-link :underline="false" style="color: #fdfff4;" @click="goNext('/concat')"> 关于我们</el-link>
               </el-col>
             </el-row>
             <el-row style="margin-top: 7px">
               <el-col :span="10" align="left">
-                <el-link :underline="false" style="color: #fdfff4;"> 中国非物质文化遗产网</el-link>
+                <el-link :underline="false" style="color: #fdfff4;"><a href="http://zgfwzwhycw.cn.trustexporter.com/"
+                                                                       target="_blank"
+                                                                       style="color: inherit;text-decoration: none">
+                  中国非物质文化遗产网</a></el-link>
               </el-col>
             </el-row>
             <el-row style="margin-top: 7px; margin-bottom: 7px">
               <el-col :span="10" align="left">
-                <el-link :underline="false" style="color: #fdfff4;"> 中国·四川非物质文化遗产</el-link>
+                <el-link :underline="false" style="color: #fdfff4;"><a href="http://whlyw.cq.gov.cn/"
+                                                                       target="_blank"
+                                                                       style="color: inherit;text-decoration: none">
+                  中国·四川非物质文化遗产网</a></el-link>
               </el-col>
             </el-row>
             <el-row style="margin-top: 7px; margin-bottom: 7px">
@@ -87,7 +94,8 @@
               style="text-align: center;">注册</span>
         <el-form :model="loginForm" ref="loginInfo" v-show="loginBar">
           <el-form-item>
-            <el-input v-model="loginForm.usernameOrEmailOrPhone" autocomplete="off" placeholder="请输入手机号或者邮箱" type="username"
+            <el-input v-model="loginForm.usernameOrEmailOrPhone" autocomplete="off" placeholder="请输入手机号或者邮箱"
+                      type="username"
                       width="50%"></el-input>
           </el-form-item>
           <el-form-item>
@@ -97,18 +105,19 @@
           <el-form-item>
             <el-input v-model="loginForm.code" placeholder="验证码">
               <template slot="append">
-                <span ref="code" class="validStatus" @click="getCode(loginForm)">获取验证码</span>
+                <span class="validStatus" ref="login_code" @click="getCode(loginForm,`login_code`)">获取验证码</span>
               </template>
             </el-input>
           </el-form-item>
         </el-form>
-        <el-form :model="registerForm" ref="registerInfo" v-show="registBar">
+        <el-form :model="registerForm" v-show="registBar">
           <el-form-item>
             <el-input v-model="registerForm.usernameOrEmailOrPhone" autocomplete="off" placeholder="昵称" type="username"
                       width="50%"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-input v-model="registerForm.usernameOrEmailOrPhone" autocomplete="off" placeholder="填写手机号" type="username"
+            <el-input v-model="registerForm.usernameOrEmailOrPhone" autocomplete="off" placeholder="填写手机号"
+                      type="username"
                       width="50%"></el-input>
           </el-form-item>
           <el-form-item>
@@ -118,7 +127,8 @@
           <el-form-item>
             <el-input v-model="registerForm.code" placeholder="验证码">
               <template slot="append">
-                <span ref="code" class="validStatus" @click="getCode">获取验证码</span>
+                <span class="validStatus" ref="register_code"
+                      @click="getCode(registerForm,`register_code`)">获取验证码</span>
               </template>
             </el-input>
           </el-form-item>
@@ -131,14 +141,14 @@
                   style="display: inline-block;width:100%;text-align: left;color: #39200f;user-select: none"
                   @click="loginForm.rememberMe = !loginForm.rememberMe">记住密码</span>
             <span v-show="registBar"
-              :class=" {'icon-jizhumimaxuanzhong':loginForm.rememberMe}"
+                  :class=" {'icon-jizhumimaxuanzhong':agree}"
                   class="iconfont icon-jizhumima"
                   style="display: inline-block;width:100%;text-align: left;color: #39200f;user-select: none"
-                  @click="loginForm.rememberMe = !loginForm.rememberMe">同意条款</span>
+                  @click="agree= !agree">同意条款</span>
           </el-col>
           <el-col :span="20">
-            <button v-show="loginBar" class="cu-btn submit_btn" @click="toSubmit('loginInfo')">登陆</button>
-            <button v-show="registBar" class="cu-btn submit_btn" @click="toSubmit('registerInfo')">注 册</button>
+            <button v-show="loginBar" class="cu-btn submit_btn" @click="toSubmit(loginForm)">登陆</button>
+            <button v-show="registBar" class="cu-btn submit_btn" @click="toSubmit(registerForm)">注 册</button>
           </el-col>
         </el-row>
       </el-dialog>
@@ -153,6 +163,7 @@ export default {
   data() {
     return {
       keywords: "",
+      banner: 'https://uploadfile.bizhizu.cn/2014/1119/20141119102021452.jpg',
       registBar: false,
       loginBar: true,
       loginShow: false,
@@ -163,11 +174,13 @@ export default {
         "rememberMe": false,
         "usernameOrEmailOrPhone": ""
       },
-      registerForm:{
+      registerForm: {
         "code": "",
         "password": "",
-        "usernameOrEmailOrPhone": ""
-      }
+        "usernameOrEmailOrPhone": "",
+
+      },
+      agree: true
     };
   },
   watch: {},
@@ -183,16 +196,14 @@ export default {
     goLogin() {
       this.loginShow = true
     },
-    async getCode(e) {
+    async getCode(e, btn_index) {
       let count = 0;
-      let btn = this.$refs.code;
+      let btn = this.$refs[btn_index];
 
-      console.log(e)
       if (btn.disabled === false) return this.$message.warning("请不要重复点击");
       let phone = e.usernameOrEmailOrPhone;
       if (!phone) return this.$message.error('请输入手机号或邮箱');
       const res = await this.$http.sendCode(phone);
-      console.log(res);
       // 设置 防抖节流
       btn.disabled = false;
       let setTimer = function () {
@@ -213,9 +224,9 @@ export default {
     },
     async toSubmit(e) {
       // 提交表单
-      const form = this.$refs[e];
-      if (!(form.usernameOrEmailOrPhone || form.password)) return this.$message.warning("请输入账号或者密码！")
-      const res = await this.$http.loginRequest(form);
+      if (!(e.usernameOrEmailOrPhone || e.password)) return this.$message.warning("请输入账号或者密码！");
+      if (!e.code) return this.$message.warning("Please send the code !!")
+      const res = await this.$http.loginRequest(e);
     },
   },
   components: {}
@@ -261,6 +272,19 @@ body {
   .banner {
     width: 100%;
     margin-top: 10px;
+
+    &::after {
+      content: "传承文化 · 守望艺术";
+      display: block;
+      width: 100%;
+      font-size: 4em;
+      position: absolute;
+      top: 0;
+      text-align: center;
+      right: 0;
+      color: #402f20;
+      z-index: 10;
+    }
   }
 
   .grid-content {

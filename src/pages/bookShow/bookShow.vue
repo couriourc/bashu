@@ -2,7 +2,7 @@
   <el-card>
     <el-row type="flex" justify="center">
       <el-col :span="20">
-        <book-detail v-for="item in info.thisPage" style="margin-bottom: 10px"></book-detail>
+        <book-detail v-for="item in info.thisPage" :bookcontent="item" style="margin-bottom: 10px"></book-detail>
       </el-col>
     </el-row>
 
@@ -39,13 +39,25 @@ export default {
           totalPage:7,
           thisPage:[
             {
-
+              imageLink:require("@/assets/images/quyi.png"),
+              name:"《红高粱》",
+              date:"2020.01.02",
+              writer:"小明",
+              detail:"阆中悠久的历史，孕育了灿烂的文化，其中最有特色的莫过于民间传统文化。阆中的民间传统文化包括皮影、巴渝舞、川北灯戏、傩戏、竹马、剪纸、龙舟赛、竹枝词、民歌、木雕等。阆中要在旅游发展中有自己的特色，就必须要把最淳朴的巴渝遗风展现给世人；要把最淳朴的巴渝遗风展现给世人，保护和利用这些民间传统文化，是重要的途径。"
             },
             {
-
+              imageLink:require("@/assets/images/mingjianwenxue.png"),
+              name:"《Big art》",
+              date:"2020.01.02",
+              writer:"world",
+              detail:"阆中悠久的历史，孕育了灿烂的文化，其中最有特色的莫过于民间传统文化。阆中的民间传统文化包括皮影、巴渝舞、川北灯戏、傩戏、竹马、剪纸、龙舟赛、竹枝词、民歌、木雕等。阆中要在旅游发展中有自己的特色，就必须要把最淳朴的巴渝遗风展现给世人；要把最淳朴的巴渝遗风展现给世人，保护和利用这些民间传统文化，是重要的途径。"
             },
             {
-
+              imageLink:require("@/assets/images/mingshu1.png"),
+              name:"《Boom Boom Boom》",
+              date:"2020.01.02",
+              writer:"CourierC",
+              detail:"阆中悠久的历史，孕育了灿烂的文化，其中最有特色的莫过于民间传统文化。阆中的民间传统文化包括皮影、巴渝舞、川北灯戏、傩戏、竹马、剪纸、龙舟赛、竹枝词、民歌、木雕等。阆中要在旅游发展中有自己的特色，就必须要把最淳朴的巴渝遗风展现给世人；要把最淳朴的巴渝遗风展现给世人，保护和利用这些民间传统文化，是重要的途径。"
             }
           ]
         }
