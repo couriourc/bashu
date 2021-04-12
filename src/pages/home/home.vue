@@ -1,8 +1,8 @@
 <template>
   <div class="home-container">
-    <swiper />
+    <swiper/>
     <bar/>
-    <el-row type="flex" class="showBar">
+    <el-row class="showBar" type="flex">
       <el-col>
         <news class="card"/>
       </el-col>
@@ -19,9 +19,7 @@
 export default {
   data() {
     return {
-      imgs: [
-
-      ]
+      imgs: []
     }
   },
   methods: {},

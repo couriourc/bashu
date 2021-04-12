@@ -1,27 +1,27 @@
 <template>
   <div class="swiper-container">
-    <el-row type="flex" align="middle" justify="center">
+    <el-row align="middle" justify="center" type="flex">
       <img
-        width="40px"
         :src="require('@/assets/images/leftBtn.png')"
+        width="40px"
         @click="prePage"
         @mouseenter="switchPage"
         @mouseleave="switchPage"
       />
       <el-carousel
-        :arrow="showArrow"
         ref="carousel"
+        :arrow="showArrow"
         :autoplay="isChange"
         type="card"
       >
-        <el-carousel-item v-for="item in imgs" class="carouselItem" :key="item">
-          <el-image :src="item" fit="cover" />
+        <el-carousel-item v-for="item in imgs" :key="item" class="carouselItem">
+          <el-image :src="item" fit="cover"/>
         </el-carousel-item>
       </el-carousel>
       <img
-        width="40px"
         :src="require('@/assets/images/rightBtn.png')"
         class="arrow-right bg-purple-light"
+        width="40px"
         @click="nextPage"
         @mouseenter="switchPage"
         @mouseleave="switchPage"

@@ -4,8 +4,8 @@
       <el-col>
         <h1 style="color: #FF5777">{{ title }}</h1>
       </el-col>
-      <el-col :span="4" v-for="(item, index) in imgList" :offset="index%5!==0?1:0" :key="index">
-        <el-card :body-style="{ padding: '0px' }" style="margin-bottom: 0.5em" shadow="hover">
+      <el-col v-for="(item, index) in imgList" :key="index" :offset="index%5!==0?1:0" :span="4">
+        <el-card :body-style="{ padding: '0px' }" shadow="hover" style="margin-bottom: 0.5em">
           <el-image :src="item.link" class="image" fit="cover" @click="clickLink(index)"/>
           <div style="text-align: center">
             <span>{{ item.detail }}</span>
@@ -69,7 +69,7 @@ export default {
     },
     imgHeight: {
       default: "100%"
-    },title:{
+    }, title: {
       default() {
         return "热门书籍";
       }

@@ -10,6 +10,7 @@ import "./assets/iconfont/iconfont.css"
 import BaiduMap from 'vue-baidu-map'
 //导入自己封装的axios
 import http from './utils/query'
+
 Vue.use(BaiduMap, {
   ak: 'qRLkF77Zro4oe0sBsMfZH5Y0HghBoMOX'
 })
@@ -26,6 +27,6 @@ Vue.prototype.$http = http;
 new Vue({
   el: "#app",
   router,
-  components: { App },
+  components: {App},
   template: "<App/>"
 });
