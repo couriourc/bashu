@@ -5,7 +5,7 @@
         <span style="font-size: 1.5em;color: #ff5777">近期活动</span>
       </div>
       <el-carousel arrow="never" height="200px">
-        <el-carousel-item v-for="(item,index) in actImgs" :label="index+1">
+        <el-carousel-item v-for="(item,index) in actImgs" :label="index+1" :key="item+index">
           <img :src="item" alt="" style="width: 100%">
         </el-carousel-item>
       </el-carousel>

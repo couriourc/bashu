@@ -7,7 +7,7 @@
       <div class="bar">
         <i class="iconfont icon-lianxidianhua bar-icon animation-scale-up"></i>
         <span class="title" style="display: inline-block">联系电话</span>
-        <span class="title"  style="display: inline-block">19983795789</span>
+        <span class="title" style="display: inline-block">19983795789</span>
       </div>
       <div class="bar">
         <i class="iconfont icon-youxiang bar-icon animation-scale-up"></i>
@@ -21,7 +21,8 @@
         <span class="title" style="display: inline-block">399038705</span>
       </div>
 
-    </div><el-row>
+    </div>
+    <el-row>
       <h1 class="concat-title">所在地址</h1>
     </el-row>
     <div class="address-bar">
@@ -32,8 +33,8 @@
 
 <script>
 export default {
-  components:{
-    "b-map":()=>import('../../components/map')
+  components: {
+    "b-map": () => import('../../components/map')
   }
 }
 </script>
@@ -79,23 +80,28 @@ export default {
     justify-content: center;
     align-content: center;
     text-align: center;
-    .title{
+
+    .title {
       color: #381801;
       margin: 0;
     }
+
     .bar-icon {
       font-size: 4em;
       color: #971b00;
+
       &:nth-child(1) {
         font-size: 4.5em;
       }
-      &:hover{
+
+      &:hover {
         animation: shake 2s;
         border-radius: 50%;
       }
 
     }
-    .address-bar{
+
+    .address-bar {
       display: inline-block;
       height: 100px;
       width: 100%;

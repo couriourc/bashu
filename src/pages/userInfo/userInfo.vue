@@ -30,9 +30,9 @@
             </el-col>
           </el-row>
         </el-col>
-        <el-col class="history" v-for="anotherInfo in anotherInfos">
+        <el-col v-for="anotherInfo in anotherInfos" class="history" :key="anotherInfo.device">
           <el-col>
-            <el-col >
+            <el-col>
               <el-row type="flex">
                 <el-col :span="3">
                   <el-avatar>h1</el-avatar>
@@ -54,9 +54,9 @@
                 <el-image :src="require('@/assets/images/p1.jpg')" fit="container" style="width: 50vw;"></el-image>
               </el-col>
               <el-col class="control-bar">
-                <el-col><i class="el-icon-share"></i>{{100}}</el-col>
+                <el-col><i class="el-icon-share"></i>{{ 100 }}</el-col>
                 <el-col><i class="el-icon-chat-line-square"></i></el-col>
-                <el-col><i class="iconfont icon-dianzan" ></i></el-col>
+                <el-col><i class="iconfont icon-dianzan"></i></el-col>
                 <el-col><i class="el-icon-star-on"></i></el-col>
               </el-col>
             </el-card>
@@ -80,14 +80,17 @@ export default {
       anotherInfos: [{
         userName: '巴蜀拾艺人',
         data: '3-2 18:30',
-        device: '华为',
-        content:'古代中国是世界中心，诸多技艺均领先世界水平，即使到现代也依然让人叹为观止，榫卯结构就是其中最为华丽的一点。\n' +
+        device: 'xiaomi',
+        content: '古代中国是世界中心，诸多技艺均领先世界水平，即使到现代也依然让人叹为观止，榫卯结构就是其中最为华丽的一点。\n' +
           '\n' +
           '榫卯是在两个木构件上所采用的一种凹凸结合的连接方式。'
-      },{
+      }, {
         userName: '巴蜀拾艺人',
         data: '3-2 18:30',
-        device: '华为'
+        device: '华为',
+        content: '古代中国是世界中心，诸多技艺均领先世界水平，即使到现代也依然让人叹为观止，榫卯结构就是其中最为华丽的一点。\n' +
+          '\n' +
+          '榫卯是在两个木构件上所采用的一种凹凸结合的连接方式。'
       },]
     }
   }
@@ -97,11 +100,13 @@ export default {
 <style lang="less" scoped>
 .userinfo-container {
   color: #381801;
+
   .asid-bar {
     height: 80vh;
     width: 40vw;
     border-right: solid 1px #874521;
     font-size: 1em;
+
     .btn {
       border-bottom: solid 1px #874521;
       padding: 0.8em;
@@ -135,10 +140,10 @@ export default {
 
       .el-card {
         .control-bar {
-          margin: 1em auto ;
+          margin: 1em auto;
           display: flex;
           font-weight: bolder;
-          font-size: 1.8em ;
+          font-size: 1.8em;
         }
       }
     }

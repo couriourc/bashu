@@ -2,11 +2,11 @@
   <el-card class="pWall-container" shadow="hover">
     <el-row type="flex">
       <el-col>
-        <el-image style="height: 400px" class="photo" fit="cover" :src="left_img" alt=""/>
+        <el-image :src="left_img" alt="" class="photo" fit="cover" style="height: 400px"/>
       </el-col>
       <el-col>
-        <el-image style="height: 200px" class="photo" fit="cover" :src="right_img[0]" alt=""/>
-        <el-image style="height: 200px" class="photo" fit="cover" :src="right_img[1]" alt=""/>
+        <el-image :src="right_img[0]" alt="" class="photo" fit="cover" style="height: 200px"/>
+        <el-image :src="right_img[1]" alt="" class="photo" fit="cover" style="height: 200px"/>
       </el-col>
     </el-row>
   </el-card>
@@ -19,16 +19,16 @@ export default {
       default() {
         return require('@/assets/images/pro2.jpg')
       }
-    },right_img: {
+    }, right_img: {
       default() {
-        return [require('@/assets/images/pro1.jpg'),require('@/assets/images/pro3.jpg')]
+        return [require('@/assets/images/pro1.jpg'), require('@/assets/images/pro3.jpg')]
       }
     },
   }
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 .pWall-container {
   height: auto;
 }

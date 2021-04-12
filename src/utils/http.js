@@ -1,7 +1,7 @@
 //重新封装axios 请求
 import axios from 'axios'
 import router from '@/router'
-import { Loading, Message } from 'element-ui'
+import {Loading, Message} from 'element-ui'
 // 重新创建一个加载状态
 let loadingStatus = true;
 //重新创建一个axios 实例，统一管理实例请求

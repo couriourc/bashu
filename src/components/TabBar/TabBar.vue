@@ -3,13 +3,13 @@
     <el-card shadow="hover" style="margin: 0 auto;width: 100%">
       <el-row type="flex">
         <el-col :span="2" :xs="0"></el-col>
-        <el-col :span="3" v-for="(item,index) in btnContent" :key="item">
+        <el-col v-for="(item,index) in btnContent" :key="item" :span="3">
           <button :class="{BtnActive:index===currentIndex}" class="Btn" @click="btnClick(index)">{{ item }}</button>
         </el-col>
       </el-row>
       <el-row style="padding: 15px 0">
-        <el-col :span="22" :sm="{span:20,offset: 2}">
-          <el-input placeholder="搜索输入相关资料" v-model="input" class="input-with-select">
+        <el-col :sm="{span:20,offset: 2}" :span="22">
+          <el-input v-model="input" class="input-with-select" placeholder="搜索输入相关资料">
             <el-button slot="append" class="to-search" style="background-color: crimson; ">
               <span style="border-right: 1px solid ;padding-right: 25px;">搜索</span>
             </el-button>
@@ -88,9 +88,10 @@ export default {
   display: inline-block;
   width: 80%;
   height: 3px;
-  background-color:#f52443 ;
+  background-color: #f52443;
   border-radius: 2em;
 }
+
 .el-input-group__append {
   border: none;
 }

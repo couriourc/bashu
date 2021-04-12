@@ -1,11 +1,11 @@
 <template>
   <div class="map-container">
-    <baidu-map class="map" :center="point" :scroll-wheel-zoom="true" :zoom="zoom" @ready="mapReady" >
-      <bm-marker :position="point" animation="BMAP_ANIMATION_BOUNCE" />
+    <baidu-map :center="point" :scroll-wheel-zoom="true" :zoom="zoom" class="map" @ready="mapReady">
+      <bm-marker :position="point" animation="BMAP_ANIMATION_BOUNCE"/>
       <bm-geolocation
-        anchor="BMAP_ANCHOR_BOTTOM_RIGHT"
-        :showAddressBar="true"
         :autoLocation="true"
+        :showAddressBar="true"
+        anchor="BMAP_ANCHOR_BOTTOM_RIGHT"
       />
     </baidu-map>
 

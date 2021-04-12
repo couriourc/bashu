@@ -4,11 +4,11 @@
 
     <book-list :img-list="bookListInfo"></book-list>
 
-    <el-row :gutter="30" justify="space-around" type="flex" style="margin-top: 2em">
-      <el-col :span="10" v-for="card_info in card_infos">
-        <el-card  class="box-card" style="text-align: center" shadow="hover">
+    <el-row :gutter="30" justify="space-around" style="margin-top: 2em" type="flex">
+      <el-col v-for="card_info in card_infos" :key="card_info.title" :span="10">
+        <el-card class="box-card" shadow="hover" style="text-align: center">
           <div slot="header" class="clearfix">
-            <span style="color: #ff5777;font-weight: bold">{{card_info.title}}</span>
+            <span style="color: #ff5777;font-weight: bold">{{ card_info.title }}</span>
           </div>
           <el-image :src="card_info.src"></el-image>
           <p>{{ card_info.description }}</p>
@@ -25,57 +25,57 @@ import BookList from "../../components/BookList/BookList";
 
 export default {
   name: "artist",
-  components:{
+  components: {
     Swiper,
     BookList
   },
 
-  data(){
-    return{
+  data() {
+    return {
 
-      card_infos:[
+      card_infos: [
         {
-          title:'猜你喜欢',
-          src:require("@/assets/images/guokui.jpg"),
-          description:'锅盔凉粉'
-        },{
-          title:'爱心帮',
-          src:require("@/assets/images/mingjianwenxue.png"),
+          title: '猜你喜欢',
+          src: require("@/assets/images/guokui.jpg"),
+          description: '锅盔凉粉'
+        }, {
+          title: '爱心帮',
+          src: require("@/assets/images/mingjianwenxue.png"),
           description: '花椒'
         }
       ],
-      bookListInfo:[
+      bookListInfo: [
         {
-          link:require("@/assets/images/mingshu1.png"),
-          detail:"民间文学"
+          link: require("@/assets/images/mingshu1.png"),
+          detail: "民间文学"
         },
         {
-          link:require("@/assets/images/mingshu1.png"),
-          detail:"传统音乐"
-        },{
-          link:require("@/assets/images/mingshu1.png"),
-          detail:"传统舞蹈"
-        },{
-          link:require("@/assets/images/mingshu1.png"),
-          detail:"民间文学"
-        },{
-          link:require("@/assets/images/mingshu1.png"),
-          detail:"民间文学"
-        },{
-          link:require("@/assets/images/mingshu1.png"),
-          detail:"民间文学"
-        },{
-          link:require("@/assets/images/mingshu1.png"),
-          detail:"民间文学"
-        },{
-          link:require("@/assets/images/mingshu1.png"),
-          detail:"民间文学"
-        },{
-          link:require("@/assets/images/mingshu1.png"),
-          detail:"民间文学"
-        },{
-          link:require("@/assets/images/mingshu1.png"),
-          detail:"民间文学"
+          link: require("@/assets/images/mingshu1.png"),
+          detail: "传统音乐"
+        }, {
+          link: require("@/assets/images/mingshu1.png"),
+          detail: "传统舞蹈"
+        }, {
+          link: require("@/assets/images/mingshu1.png"),
+          detail: "民间文学"
+        }, {
+          link: require("@/assets/images/mingshu1.png"),
+          detail: "民间文学"
+        }, {
+          link: require("@/assets/images/mingshu1.png"),
+          detail: "民间文学"
+        }, {
+          link: require("@/assets/images/mingshu1.png"),
+          detail: "民间文学"
+        }, {
+          link: require("@/assets/images/mingshu1.png"),
+          detail: "民间文学"
+        }, {
+          link: require("@/assets/images/mingshu1.png"),
+          detail: "民间文学"
+        }, {
+          link: require("@/assets/images/mingshu1.png"),
+          detail: "民间文学"
         }
       ]
     }
@@ -84,7 +84,7 @@ export default {
 </script>
 
 <style scoped>
-p{
+p {
   text-align: center;
 }
 </style>

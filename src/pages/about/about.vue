@@ -1,12 +1,12 @@
 <template>
   <div id="Goods">
     <el-row>
-      <el-col :span="22" :offset="1">
+      <el-col :offset="1" :span="22">
         <tab-bar></tab-bar>
       </el-col>
     </el-row>
 
-    <el-row type="flex" justify="space-around">
+    <el-row justify="space-around" type="flex">
       <el-col :span="10">
         <act-list style="height: 100%"></act-list>
       </el-col>
@@ -15,7 +15,7 @@
       </el-col>
     </el-row>
 
-    <el-row type="flex" justify="space-around">
+    <el-row justify="space-around" type="flex">
       <el-col :span="10">
         <book-list :img-list="imgList"></book-list>
       </el-col>
@@ -25,8 +25,8 @@
     </el-row>
 
     <el-row>
-      <el-col :span="22" :offset="1">
-        <book-list title="热门艺术" img-height="50px"></book-list>
+      <el-col :offset="1" :span="22">
+        <book-list img-height="50px" title="热门艺术"></book-list>
       </el-col>
     </el-row>
   </div>
@@ -45,23 +45,23 @@ export default {
   data() {
     return {
       imgList: [
-            {
-              link: require("@/assets/images/p4.png"),
-              detail: ""
-            }, {
-              link: require("@/assets/images/pro2.jpg"),
-              detail: ""
-            }, {
-              link: require("@/assets/images/p4.png"),
-              detail: ""
-            }, {
-              link: require("@/assets/images/pro2.jpg"),
-              detail: ""
-            }, {
-              link: require("@/assets/images/p4.png"),
-              detail: ""
-            },
-          ]
+        {
+          link: require("@/assets/images/p4.png"),
+          detail: ""
+        }, {
+          link: require("@/assets/images/pro2.jpg"),
+          detail: ""
+        }, {
+          link: require("@/assets/images/p4.png"),
+          detail: ""
+        }, {
+          link: require("@/assets/images/pro2.jpg"),
+          detail: ""
+        }, {
+          link: require("@/assets/images/p4.png"),
+          detail: ""
+        },
+      ]
 
 
     }

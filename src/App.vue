@@ -53,16 +53,16 @@
             <el-row style="margin-top: 7px">
               <el-col :span="10" align="left">
                 <el-link :underline="false" style="color: #fdfff4;"><a href="http://zgfwzwhycw.cn.trustexporter.com/"
-                                                                       target="_blank"
-                                                                       style="color: inherit;text-decoration: none">
+                                                                       style="color: inherit;text-decoration: none"
+                                                                       target="_blank">
                   中国非物质文化遗产网</a></el-link>
               </el-col>
             </el-row>
             <el-row style="margin-top: 7px; margin-bottom: 7px">
               <el-col :span="10" align="left">
                 <el-link :underline="false" style="color: #fdfff4;"><a href="http://whlyw.cq.gov.cn/"
-                                                                       target="_blank"
-                                                                       style="color: inherit;text-decoration: none">
+                                                                       style="color: inherit;text-decoration: none"
+                                                                       target="_blank">
                   中国·四川非物质文化遗产网</a></el-link>
               </el-col>
             </el-row>
@@ -88,11 +88,11 @@
         </el-row>
       </el-footer>
       <el-dialog :visible.sync="loginShow" width="35%">
-        <span slot="title" class="title" :class="{'is-active':loginBar}" @click="loginBar =true;registBar=false;"
-              style="text-align: center; ">登陆</span>
-        <span slot="title" class="title" :class="{'is-active':registBar}" @click="loginBar =false;registBar=true;"
-              style="text-align: center;">注册</span>
-        <el-form :model="loginForm" ref="loginInfo" v-show="loginBar">
+        <span slot="title" :class="{'is-active':loginBar}" class="title" style="text-align: center; "
+              @click="loginBar =true;registBar=false;">登陆</span>
+        <span slot="title" :class="{'is-active':registBar}" class="title" style="text-align: center;"
+              @click="loginBar =false;registBar=true;">注册</span>
+        <el-form v-show="loginBar" ref="loginInfo" :model="loginForm">
           <el-form-item>
             <el-input v-model="loginForm.usernameOrEmailOrPhone" autocomplete="off" placeholder="请输入手机号或者邮箱"
                       type="username"
@@ -105,12 +105,12 @@
           <el-form-item>
             <el-input v-model="loginForm.code" placeholder="验证码">
               <template slot="append">
-                <span class="validStatus" ref="login_code" @click="getCode(loginForm,`login_code`)">获取验证码</span>
+                <span ref="login_code" class="validStatus" @click="getCode(loginForm,`login_code`)">获取验证码</span>
               </template>
             </el-input>
           </el-form-item>
         </el-form>
-        <el-form :model="registerForm" v-show="registBar">
+        <el-form v-show="registBar" :model="registerForm">
           <el-form-item>
             <el-input v-model="registerForm.usernameOrEmailOrPhone" autocomplete="off" placeholder="昵称" type="username"
                       width="50%"></el-input>
@@ -127,7 +127,7 @@
           <el-form-item>
             <el-input v-model="registerForm.code" placeholder="验证码">
               <template slot="append">
-                <span class="validStatus" ref="register_code"
+                <span ref="register_code" class="validStatus"
                       @click="getCode(registerForm,`register_code`)">获取验证码</span>
               </template>
             </el-input>
