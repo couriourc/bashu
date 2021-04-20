@@ -31,7 +31,7 @@ export default {
             src: require('@/assets/images/p2.png'),
             title: '创艺',
             info: '直播课堂',
-            url: '/artist'
+            url: '/live'
           }, {
             src: require('@/assets/images/p3.png'),
             title: '艺淘',

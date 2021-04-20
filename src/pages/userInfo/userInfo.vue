@@ -54,10 +54,10 @@
                 <el-image :src="require('@/assets/images/p1.jpg')" fit="container" style="width: 50vw;"></el-image>
               </el-col>
               <el-col class="control-bar">
-                <el-col><i class="el-icon-share"></i>{{ 100 }}</el-col>
-                <el-col><i class="el-icon-chat-line-square"></i></el-col>
-                <el-col><i class="iconfont icon-dianzan"></i></el-col>
-                <el-col><i class="el-icon-star-on"></i></el-col>
+                <el-col><i class="el-icon-share" :class="{'isShare':anotherInfo.isStar}"></i>{{ 100 }}</el-col>
+                <el-col><i class="el-icon-chat-line-square" :class="{'isShare':anotherInfo.isStar}"></i></el-col>
+                <el-col><i class="iconfont icon-dianzan" :class="{'isShare':anotherInfo.isStar}"></i></el-col>
+                <el-col><i class="el-icon-star-on" :class="{'isShare':anotherInfo.isStar}"></i></el-col>
               </el-col>
             </el-card>
           </el-col>
@@ -68,6 +68,9 @@
 </template>
 
 <script>
+// 导入mock
+let Mock = require('mockjs');
+//
 export default {
   data() {
     return {
@@ -81,11 +84,13 @@ export default {
         userName: '巴蜀拾艺人',
         data: '3-2 18:30',
         device: 'xiaomi',
-        content: '古代中国是世界中心，诸多技艺均领先世界水平，即使到现代也依然让人叹为观止，榫卯结构就是其中最为华丽的一点。\n' +
-          '\n' +
-          '榫卯是在两个木构件上所采用的一种凹凸结合的连接方式。'
+        content: Mock.mock('@cparagraph(10)'),
+        star: 99,
+        comments:[],
+        isStar:true,
+        isFolow:true,
       }, {
-        userName: '巴蜀拾艺人',
+        userName: '巴蜀拾艺人1',
         data: '3-2 18:30',
         device: '华为',
         content: '古代中国是世界中心，诸多技艺均领先世界水平，即使到现代也依然让人叹为观止，榫卯结构就是其中最为华丽的一点。\n' +
@@ -111,6 +116,11 @@ export default {
       border-bottom: solid 1px #874521;
       padding: 0.8em;
       margin-top: 1em;
+      user-select: none;
+      &:hover{
+        color: #fffae8;
+        background: #3e0014;
+      }
 
       i {
         font-size: 1.8em;
@@ -137,7 +147,9 @@ export default {
       display: flex;
       flex-direction: column;
       margin-top: 2em;
-
+      .isShare{
+        color: #867707;
+      }
       .el-card {
         .control-bar {
           margin: 1em auto;

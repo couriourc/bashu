@@ -6,6 +6,7 @@ import about from "../pages/about/about";
 import userInfo from "../pages/userInfo/userInfo";
 import artist from "../pages/artist/artist";
 import bookShow from "../pages/bookShow/bookShow";
+import live from "../pages/live/live";
 
 Vue.use(Router);
 
@@ -38,6 +39,10 @@ export default new Router({
       path: '/show',
       name: 'show',
       component: bookShow
+    } ,{
+      path: '/live',
+      name: 'live',
+      component: live
     }
   ]
 });

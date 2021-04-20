@@ -22,9 +22,9 @@
       </div>
 
     </div>
-    <el-row>
       <h1 class="concat-title">所在地址</h1>
-    </el-row>
+      <p style="color: #39200f;margin-top: 1em">地址:四川省南充市顺庆区师大路1号(华凤校区)</p>
+
     <div class="address-bar">
       <b-map></b-map>
     </div>

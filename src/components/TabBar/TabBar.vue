@@ -1,7 +1,7 @@
 <template>
   <div id="tab-bar" style="margin-bottom: 1em">
-    <el-card shadow="hover" style="margin: 0 auto;width: 100%">
-      <el-row type="flex">
+    <el-card shadow="hover" style="margin: 0 auto;">
+      <el-row type="flex" style="width: 100%">
         <el-col :span="2" :xs="0"></el-col>
         <el-col v-for="(item,index) in btnContent" :key="item" :span="3">
           <button :class="{BtnActive:index===currentIndex}" class="Btn" @click="btnClick(index)">{{ item }}</button>

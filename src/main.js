@@ -17,11 +17,6 @@ Vue.use(BaiduMap, {
 Vue.config.productionTip = false;
 Vue.use(ElementUi);
 Vue.prototype.$http = http;
-//
-// router.beforeEach((to,from,next)=>{
-//
-//
-// })
 
 /* eslint-disable no-new */
 new Vue({

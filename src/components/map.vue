@@ -9,7 +9,6 @@
       />
     </baidu-map>
 
-    <p style="color: #39200f">地址:四川省南充市顺庆区师大路1号(华凤校区)</p>
   </div>
 </template>
 <script>
@@ -32,6 +31,9 @@ export default {
 </script>
 
 <style>
+.map-container{
+  margin-bottom: 4em;
+}
 .map {
   margin-top: 4em;
   display: inline-block;
