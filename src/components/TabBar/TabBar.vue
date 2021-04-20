@@ -1,7 +1,7 @@
 <template>
   <div id="tab-bar" style="margin-bottom: 1em">
-    <el-card shadow="hover" style="margin: 0 auto;width: 100%">
-      <el-row type="flex">
+    <el-card shadow="hover" style="margin: 0 auto;border-radius: 2em 2em 0 0">
+      <el-row type="flex" style="width: 100%">
         <el-col :span="2" :xs="0"></el-col>
         <el-col v-for="(item,index) in btnContent" :key="item" :span="3">
           <button :class="{BtnActive:index===currentIndex}" class="Btn" @click="btnClick(index)">{{ item }}</button>
@@ -9,8 +9,10 @@
       </el-row>
       <el-row style="padding: 15px 0">
         <el-col :sm="{span:20,offset: 2}" :span="22">
-          <el-input v-model="input" class="input-with-select" placeholder="搜索输入相关资料">
-            <el-button slot="append" class="to-search" style="background-color: crimson; ">
+          <el-input v-model="input" class="input-with-select" style="outline: none;border-radius: 0"
+                    placeholder="搜索输入相关资料">
+            <el-button slot="append" class="to-search" style="background-color: crimson;border-radius: 0 "
+                       @click="handleSearch">
               <span style="border-right: 1px solid ;padding-right: 25px;">搜索</span>
             </el-button>
             <el-button slot="append" class="to-search"
@@ -43,17 +45,17 @@ export default {
   methods: {
     btnClick(index) {
       this.currentIndex = index;
+    },
+    async handleSearch() {
+      const res = await this.$http.search(this.input);
+      console.log(res)
+      this.$router.push('show')
     }
   }
 }
 </script>
 
 <style scoped>
-#tab-bar {
-  border-radius: 10px;
-  overflow: hidden;
-  padding: 0 10px;
-}
 
 .to-search {
   color: white !important;

@@ -8,5 +8,6 @@ export default {
   socialUserId: (userId) => get('/auth/social/' + userId),
   requestVO: (params) => post('/auth/updatePassword', params),
   uploadFiles: (params) => post('/file/upload', params),
-  authUpdate: (_) => put('/auth', _)
+  authUpdate: (_) => put('/auth', _),
+  search:id=>get('/blog/'+id)
 }

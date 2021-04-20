@@ -2,7 +2,7 @@
   <div class="box-card" style="margin-bottom: 1em;">
     <el-card shadow="hover">
       <div slot="header" class="clearfix">
-        <span style="font-size: 1.5em;color: #ff5777">近期活动</span>
+        <span style="font-size: 1.5em;color: #ff5777">{{title}}</span>
       </div>
       <el-carousel arrow="never" height="200px">
         <el-carousel-item v-for="(item,index) in actImgs" :label="index+1" :key="item+index">
@@ -24,7 +24,8 @@ export default {
           require('@/assets/images/jiyi.png'),
           require('@/assets/images/jiyi.png'),]
       }
-    }
+    },
+    title:String,
   }
 }
 </script>

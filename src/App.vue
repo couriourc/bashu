@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <el-container>
+    <el-container style="background: #E3DCD4;">
       <el-header class="header" height="auto">
         <el-image
           :src="banner"
@@ -8,7 +8,8 @@
           fit="cover"
           style="height: 20vw"
         />
-        <el-row :gutter="20" align="middle" justify="center" type="flex">
+        <el-row :gutter="20" align="middle" justify="center" type="flex" style="padding: 1em;"
+        >
           <el-col :span="10" align="middle" justify="center"
           >
             <i class="el-icon-mobile-phone" style="font-size: 2em"></i>
@@ -34,7 +35,7 @@
       </el-header>
       <el-main>
         <transition enter-active-class="animation-fade" name="faded">
-          <router-view></router-view>
+          <router-view class="main-window"></router-view>
         </transition>
       </el-main>
       <el-footer class="_footer" height="180px">
@@ -152,16 +153,19 @@
                   @click="agree= !agree">同意条款</span>
           </el-col>
           <el-col :span="20">
-            <button v-show="loginBar" class="cu-btn submit_btn" @click="toSubmit(loginForm)">登陆</button>
-            <button v-show="registBar" class="cu-btn submit_btn" @click="toSubmit(registerForm)">注 册</button>
+            <button v-show="loginBar" class="cu-btn submit_btn" @click="toSubmitLogin(loginForm)">登陆</button>
+            <button v-show="registBar" class="cu-btn submit_btn" @click="toSubmitRegister(registerForm)">注 册</button>
           </el-col>
         </el-row>
       </el-dialog>
     </el-container>
+    <copyright></copyright>
   </div>
 </template>
 
 <script>
+
+import Copyright from "./components/copyright/copyright";
 
 export default {
   name: "App",
@@ -227,14 +231,20 @@ export default {
       };
       let timer = setTimer();
     },
-    async toSubmit(e) {
+    async toSubmitLogin(e) {
       // 提交表单
       if (!(e.usernameOrEmailOrPhone || e.password)) return this.$message.warning("请输入账号或者密码！");
       if (!e.code) return this.$message.warning("Please send the code !!")
       const res = await this.$http.loginRequest(e);
     },
+    async toSubmitRegister(e) {
+      // 提交表单
+      if (!(e.usernameOrEmailOrPhone || e.password)) return this.$message.warning("请输入账号或者密码！");
+      if (!e.code) return this.$message.warning("Please send the code !!")
+      const res = await this.$http.registerRequest(e);
+    },
   },
-  components: {}
+  components: {Copyright}
 };
 </script>
 
@@ -265,9 +275,17 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   padding: 0;
+  list-style: none;
+
+  background-size: cover;
 
   .header {
     width: 100%;
@@ -280,6 +298,7 @@ body {
 
     &::after {
       content: "传承文化 · 守望艺术";
+      font-family: "細明體-ExtB", serif;
       display: block;
       width: 100%;
       font-size: 4em;
@@ -314,6 +333,11 @@ body {
   .fade-enter-active, .fade-leave-to {
     opacity: 1;
 
+  }
+
+  .main-window {
+    height: auto;
+    width: 100%;
   }
 
   .submit_btn {

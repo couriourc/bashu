@@ -1,11 +1,11 @@
 <template>
   <el-card class="box-card-container" shadow="hover">
-    <el-row>
+    <el-row style="height: 350px">
       <el-col>
         <h1 style="color: #FF5777">{{ title }}</h1>
       </el-col>
-      <el-col v-for="(item, index) in imgList" :key="index" :offset="index%5!==0?1:0" :span="4">
-        <el-card :body-style="{ padding: '0px' }" shadow="hover" style="margin-bottom: 0.5em">
+      <el-col v-for="(item, index) in imgList" :key="index+item" :offset="index%5!==0?1:0" :span="4">
+        <el-card :body-style="{ padding: '0px' }" shadow="hover" >
           <el-image :src="item.link" class="image" fit="cover" @click="clickLink(index)"/>
           <div style="text-align: center">
             <span>{{ item.detail }}</span>

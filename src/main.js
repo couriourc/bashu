@@ -10,18 +10,16 @@ import "./assets/iconfont/iconfont.css"
 import BaiduMap from 'vue-baidu-map'
 //导入自己封装的axios
 import http from './utils/query'
+// 引入vue-core-video-player
+import VueCoreVideoPlayer from 'vue-core-video-player'
 
+Vue.use(VueCoreVideoPlayer)
 Vue.use(BaiduMap, {
   ak: 'qRLkF77Zro4oe0sBsMfZH5Y0HghBoMOX'
 })
 Vue.config.productionTip = false;
 Vue.use(ElementUi);
 Vue.prototype.$http = http;
-//
-// router.beforeEach((to,from,next)=>{
-//
-//
-// })
 
 /* eslint-disable no-new */
 new Vue({

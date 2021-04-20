@@ -1,5 +1,7 @@
 <template>
-  <el-card>
+
+  <div>
+    <tab-bar></tab-bar>
     <el-row justify="center" type="flex">
       <el-col :span="20">
         <book-detail v-for="item in info.thisPage" :bookcontent="item" :key="item.name" style="margin-bottom: 10px"></book-detail>
@@ -20,16 +22,17 @@
       >
       </el-pagination>
     </el-row>
-  </el-card>
+  </div>
 </template>
 
 <script>
 import BookDetail from "../../components/bookDetail/BookDetail";
-
+import tabBar from "../../components/TabBar/TabBar"
 export default {
   name: "bookShow",
   components: {
-    BookDetail
+    BookDetail,
+    tabBar
   },
   props: {
     info: {

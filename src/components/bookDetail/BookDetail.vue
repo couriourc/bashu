@@ -1,27 +1,15 @@
 <template>
-  <el-card shadow="hover">
-    <el-container>
+  <el-card shadow="hover" >
+    <el-container >
       <el-aside style="text-align: center" width="200px">
-        <div class="imgStyle">
-          <img :src="bookcontent.imageLink" alt="">
-        </div>
+        <img :src="bookcontent.imageLink" alt="图片" style="width: 100%;height: 100%"/>
       </el-aside>
 
-      <el-main style="line-height: 30px">
+      <el-main style="line-height: 30px" >
         <el-row><span style="color: red">{{ bookcontent.name }}</span></el-row>
-        <el-row>
-          <span>作者：</span>
-          {{ bookcontent.writer }}
-        </el-row>
-        <el-row>
-          <span>日期：</span>
-          {{ bookcontent.date }}
-        </el-row>
-        <el-row class="contentDe">
-          <span>简介：</span>
-          {{ bookcontent.detail }}
-        </el-row>
-
+        <el-row><span>作者：{{ bookcontent.writer }}</span></el-row>
+        <el-row><span>日期： {{ bookcontent.date }}</span></el-row>
+        <el-row class="contentDe"><span>简介：{{ bookcontent.detail }}</span></el-row>
       </el-main>
     </el-container>
   </el-card>
@@ -49,10 +37,6 @@ export default {
 </script>
 
 <style scoped>
-img {
-  width: 100px;
-}
-
 .contentDe {
   overflow: hidden;
   text-overflow: ellipsis;

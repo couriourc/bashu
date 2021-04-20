@@ -2,18 +2,9 @@
   <el-card :body-style="{padding:0}" shadow="hover">
     <el-container class="userinfo-container">
       <el-aside class="asid-bar">
-        <el-col class="btn"><i class="el-icon-potato-strips"></i><span>作品</span>
+        <el-col v-for="(item,index) in btn_options" class="btn"  :key="item.icon+index">
+          <span><i :class=" item.icon" />{{item.title}}</span>
         </el-col>
-        <el-col class="btn"><i class="iconfont icon-shoucang"></i><span>收藏</span>
-        </el-col>
-        <el-col class="btn"><i class="iconfont icon-pinglun"></i><span>讨论贴</span>
-        </el-col>
-        <el-col class="btn"><i class="el-icon-user"></i><span>账户</span>
-        </el-col>
-        <el-col class="btn"><i class="iconfont icon-liulanlishi"></i><span>浏览历史</span>
-        </el-col>
-        <el-col class="btn"><i class="el-icon-question"></i><span>意见反馈   </span></el-col>
-        <el-col class="btn"><i class="iconfont icon-shezhi"></i><span>设置</span></el-col>
       </el-aside>
       <el-main class="main-bar">
         <el-col class="userinfo">
@@ -30,7 +21,7 @@
             </el-col>
           </el-row>
         </el-col>
-        <el-col v-for="anotherInfo in anotherInfos" class="history" :key="anotherInfo.device">
+        <el-col v-for="(anotherInfo,index) in anotherInfos" class="history" :key="anotherInfo.device+index">
           <el-col>
             <el-col>
               <el-row type="flex">
@@ -48,16 +39,16 @@
           <el-col>
             <el-card shadow="hover">
               <el-col>
-                <p>{{ anotherInfo.content }}</p>
+                <p style="text-indent: 2em;margin-bottom: 2em">{{ anotherInfo.content }}</p>
               </el-col>
               <el-col style="text-align: center">
                 <el-image :src="require('@/assets/images/p1.jpg')" fit="container" style="width: 50vw;"></el-image>
               </el-col>
               <el-col class="control-bar">
-                <el-col><i class="el-icon-share"></i>{{ 100 }}</el-col>
-                <el-col><i class="el-icon-chat-line-square"></i></el-col>
-                <el-col><i class="iconfont icon-dianzan"></i></el-col>
-                <el-col><i class="el-icon-star-on"></i></el-col>
+                <el-col><i class="el-icon-share" :class="{'isShare':anotherInfo.isStar}"></i>{{ 100 }}</el-col>
+                <el-col><i class="el-icon-chat-line-square" :class="{'isShare':anotherInfo.isStar}"></i></el-col>
+                <el-col><i class="iconfont icon-dianzan" :class="{'isShare':anotherInfo.isStar}"></i></el-col>
+                <el-col><i class="el-icon-star-on" :class="{'isShare':anotherInfo.isStar}"></i></el-col>
               </el-col>
             </el-card>
           </el-col>
@@ -68,6 +59,9 @@
 </template>
 
 <script>
+// 导入mock
+let Mock = require('mockjs');
+//
 export default {
   data() {
     return {
@@ -81,16 +75,38 @@ export default {
         userName: '巴蜀拾艺人',
         data: '3-2 18:30',
         device: 'xiaomi',
-        content: '古代中国是世界中心，诸多技艺均领先世界水平，即使到现代也依然让人叹为观止，榫卯结构就是其中最为华丽的一点。\n' +
-          '\n' +
-          '榫卯是在两个木构件上所采用的一种凹凸结合的连接方式。'
+        content: '每次可接待100人次，学习观摩剪纸创作技法；观摩剪纸实物，体验工艺品制作剪、刻流程，以及和代表性传承人零距离接触，交流剪纸艺术心得，参与互动活动。',
+        star: 99,
+        comments: [],
+        isStar: true,
+        isFolow: true,
       }, {
-        userName: '巴蜀拾艺人',
+        userName: '巴蜀拾艺人1',
         data: '3-2 18:30',
         device: '华为',
-        content: '古代中国是世界中心，诸多技艺均领先世界水平，即使到现代也依然让人叹为观止，榫卯结构就是其中最为华丽的一点。\n' +
-          '\n' +
-          '榫卯是在两个木构件上所采用的一种凹凸结合的连接方式。'
+        content: '  仪陇民间地域传说，具有强烈的神秘感，表达出对大自然的崇拜，流传的口头性、形式内容的传承丰富，有明显的客家文化的特点：主张惩恶扬善、弘扬孝道、崇尚勤劳朴实、提倡乐观向上，展现了客家人的精神风貌。'
+      },],
+      btn_options:[{
+        icon:'el-icon-potato-strips',
+        title:'作品'
+      },{
+        icon:'iconfont icon-shoucang',
+        title:'收藏'
+      },{
+        icon:'iconfont icon-pinglun',
+        title:'讨论贴'
+      },{
+        icon:'el-icon-user',
+        title:'账户'
+      },{
+        icon:'iconfont icon-liulanlishi',
+        title:'浏览历史'
+      },{
+        icon:'el-icon-question',
+        title:'意见反馈'
+      },{
+        icon:'iconfont icon-shezhi',
+        title:'设置'
       },]
     }
   }
@@ -111,6 +127,13 @@ export default {
       border-bottom: solid 1px #874521;
       padding: 0.8em;
       margin-top: 1em;
+      user-select: none;
+      text-align: center;
+      &:hover {
+        color: #fffae8;
+        background: #3e0014;
+        cursor: pointer;
+      }
 
       i {
         font-size: 1.8em;
@@ -137,6 +160,10 @@ export default {
       display: flex;
       flex-direction: column;
       margin-top: 2em;
+
+      .isShare {
+        color: #867707;
+      }
 
       .el-card {
         .control-bar {

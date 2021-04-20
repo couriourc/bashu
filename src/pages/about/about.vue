@@ -8,7 +8,7 @@
 
     <el-row justify="space-around" type="flex">
       <el-col :span="10">
-        <act-list style="height: 100%"></act-list>
+        <act-list title="近期活动" style="height: 100%"></act-list>
       </el-col>
       <el-col :span="10">
         <new-list></new-list>
@@ -16,8 +16,9 @@
     </el-row>
 
     <el-row justify="space-around" type="flex">
-      <el-col :span="10">
-        <book-list :img-list="imgList"></book-list>
+      <el-col  :span="10">
+        <act-list title="推荐信息" :actImgs="imgList" style="height: 100%"></act-list>
+
       </el-col>
       <el-col :span="10">
         <new-list title="热点资讯"></new-list>
@@ -45,22 +46,13 @@ export default {
   data() {
     return {
       imgList: [
-        {
-          link: require("@/assets/images/p4.png"),
-          detail: ""
-        }, {
-          link: require("@/assets/images/pro2.jpg"),
-          detail: ""
-        }, {
-          link: require("@/assets/images/p4.png"),
-          detail: ""
-        }, {
-          link: require("@/assets/images/pro2.jpg"),
-          detail: ""
-        }, {
-          link: require("@/assets/images/p4.png"),
-          detail: ""
-        },
+         require("@/assets/images/p4.png"),
+         require("@/assets/images/p4.png"),
+         require("@/assets/images/p4.png"),
+         require("@/assets/images/p4.png"),
+         require("@/assets/images/p4.png"),
+
+
       ]
 
 
